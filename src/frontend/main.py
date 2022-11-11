@@ -1,4 +1,5 @@
-from meigen import author, told
+from datetime import datetime
+
 from yanesdk import *
 
 
@@ -68,17 +69,20 @@ class BookManager(MyGameObject):
 
         if app.flg == False:
             # ウェルカムメッセージの表示
-            welcom_size = int(30 * app.canvas.width / 1920)
+            welcom_size = int(80 * app.canvas.width / 1920)
             center_width = app.canvas.width // 2
             center_height = app.canvas.height // 2
             size = app.math.randint(welcom_size, welcom_size)
             p = Vector2D(center_width, center_height * 0.95)
-            pp = Vector2D(center_width, center_height * 1.05)
+            pp = Vector2D(center_width, center_height * 1.15)
             app.canvas.draw_text_center(
-                told, p, font=f"{size}px serif", color=app.color[app.wordcolor]
+                "实时热点", p, font=f"{size}px serif", color=app.color[app.wordcolor]
             )
             app.canvas.draw_text_center(
-                author, pp, font=f"{size//2}px serif", color=app.color[app.wordcolor]
+                datetime.now().strftime("%Y/%m/%d %H:%M"),
+                pp,
+                font=f"{size//2}px serif",
+                color=app.color[app.wordcolor],
             )
             app.flg = True
 
@@ -98,7 +102,7 @@ class BookManager(MyGameObject):
                 scene = cast(GameMainScene, app.scene)
                 # 文字の横位置、フォントサイズ、タイトルをランダム指定
                 maxnum = int(60 * app.canvas.width / 1920)
-                minnum = int(10 * app.canvas.width / 1920)
+                minnum = int(20 * app.canvas.width / 1920)
                 size = app.math.randint(minnum, maxnum)
                 p = Vector2D(app.math.randint(0, int(rect.s.x)), 0)
                 title = app.titles[app.math.randint(0, app.lentitles)]

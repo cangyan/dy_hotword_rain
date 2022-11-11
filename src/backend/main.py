@@ -27,6 +27,9 @@ def hot_words():
                     key = item
             for item in j["data"]["loadersData"][key]["data"]["current"]:
                 # print(item)
-                wordList.append(item)
+                wordList.append(item["topic_name"])
 
-    return wordList
+    return wordList[:15]
+
+
+# print(hot_words())
