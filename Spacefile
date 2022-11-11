@@ -1,0 +1,13 @@
+v: 0
+icon: ./image/icon.png
+app_name: "Word Rain"
+micros:
+  - name: frontend
+    src: src/frontend
+    engine: static
+    primary: true
+  - name: backend
+    src: src/backend
+    engine: python3.8
+    path: api
+
